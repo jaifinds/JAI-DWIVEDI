@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-plus: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  
+  --color-brand-pink: #ec4899;
+  --color-brand-orange: #f97316;
+  --color-brand-red: #ef4444;
+}
+
+@layer base {
+  body {
+    background-color: #f3f5f8;
+    color: #121212;
+    font-family: var(--font-plus);
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05), inset 0 1px 0px rgba(255,255,255,0.8);
+  }
+  
+  .glass-button {
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.4));
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05), inset 0 2px 2px rgba(255,255,255,1);
+  }
+  
+  .glass-dark {
+    background: rgba(20, 20, 22, 0.65);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+  
+  .soft-shadow {
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 5px 10px -5px rgba(0,0,0,0.02);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 2.5s ease-in-out infinite;
+}
+

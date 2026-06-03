@@ -1,0 +1,68 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with balance, refer code and matching referrals count",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "balance": { "type": "integer" },
+        "referCode": { "type": "string" },
+        "referredBy": { "type": "string" },
+        "referCount": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "balance", "referCode"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "A ledger history credit/debit transaction",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "source": { "type": "string" },
+        "amount": { "type": "integer" },
+        "date": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "source", "amount", "date"]
+    },
+    "Redemption": {
+      "title": "Redemption",
+      "description": "A reward claim transaction awaiting admin audit",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "rewardId": { "type": "string" },
+        "title": { "type": "string" },
+        "coinsCost": { "type": "integer" },
+        "paymentDetail": { "type": "string" },
+        "status": { "type": "string", "enum": ["PENDING", "APPROVED", "REJECTED"] },
+        "couponCode": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "completedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "rewardId", "title", "coinsCost", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profiles containing coins and referral mapping"
+    },
+    "users/{userId}/history/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Ledger entries tracking coins gained or spent"
+    },
+    "redemptions/{redemptionId}": {
+      "schema": "Redemption",
+      "description": "System-wide payout request claims"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Jai Rewards",
+  "description": "Jai Rewards - Play Games, Get Money and Cash Rewards! Earn coins by playing games, taking surveys, viewing videos, and refer to win. Redeem for UPI Cash and Google Play eGift Cards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
